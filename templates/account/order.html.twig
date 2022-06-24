@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes commandes !{% endblock %}
+
+{% block content %}
+
+<h1>Mes commandes</h1>
+
+
+
+<a href="{{ path('account') }}">Retour</a>
+<hr>
+
+{% if orders|length == 0 %}
+<hr>
+<p>Pas encore de commandes</p>
+{% else %}
+<table class="table text-center">
+  <thead>
+    <tr>
+      <th scope="col">Référence</th>
+      <th scope="col">Passé le</th>
+      <th scope="col">Produit(s)</th>
+      <th scope="col">État</th>
+      <th scope="col">Total</th>
+      <th scope="col">Commande</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    {% for order in orders %}
+
+     {% if order.state == 1 %}
+      {% set statut = 'Paiement accepté' %}
+    {% elseif order.state == 2 %}
+      {% set statut = 'En cours de préparation' %}
+    {% elseif order.state == 3 %}
+      {% set statut = 'En cours de livraison' %}
+    {% endif %} 
+
+
+
+    <tr>
+      <td><span class="badge badge-secondary">{{order.reference}}</span></td>
+      <td> {{order.createAt|date('d/m/Y')}} </td>
+      <td>{{ order.orderDetails|length }}</td>
+      <td>{{ statut }}</td>
+      <td>{{(order.carrierPrice + order.getTotal)|number_format(2,',','.')}}€ </td>
+      <td class="text-right"><a href="{{ path('account_order_show', {'reference': order.reference}) }}">Voir ma
+          commande</a> </td>
+    </tr>
+
+    {% endfor %}
+  </tbody>
+</table>
+
+
+
+
+{% endif %}
+
+
+
+
+
+{% endblock %}

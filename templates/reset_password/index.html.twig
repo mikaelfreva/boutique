@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Msp oublier - La Boutique Française{% endblock %}
+{% block content %}
+<div class="block-small">
+
+   
+
+
+    <form method="post">
+        <h1 class="h3 mb-3 font-weight-normal"> Réinitialiser mot de passe</h1>
+        <label for="inputEmail">Email</label>
+        <input type="email" placeholder="Votre mail" name="email" id="inputEmail" class="form-control"
+            autocomplete="email" required autofocus>
+
+        <button class="btn btn-lg btn-primary mt-3 btn-sm" type="submit">
+            Valider
+        </button>
+    </form>
+</div>
+
+{% endblock %}

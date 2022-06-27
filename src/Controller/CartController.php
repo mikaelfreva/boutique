@@ -12,15 +12,23 @@ use Symfony\Component\Routing\Annotation\Route;
 class CartController extends AbstractController
 {
 
+    private $productRepository;
+    private $cartService;
+
+    public function __construct(ProductRepository $productRepository, CartService $cartService )
+    {
+        $this->productRepository = $productRepository;
+        $this->cartService = $cartService;
+    }
 
     #[Route('/panier', name: 'app_cart')]
-    public function index(CartService $cartService, ProductRepository $productRepository): Response
+    public function index(): Response
     {
-        $products = $productRepository->findByIsBest(1);
+        $products = $this->productRepository->findByIsBest(1);
     
         return $this->render('cart/index.html.twig', [
-            'items' => $cartService->getFullcart(),
-            'total' => $cartService->getTotal(),
+            'items' => $this->cartService->getFullcart(),
+            'total' => $this->cartService->getTotal(),
             'products' => $products
         ]);
     }
@@ -28,38 +36,46 @@ class CartController extends AbstractController
 
 
     #[Route('/panier/add/{id}', name: 'add_to_cart')]
-    public function add($id, CartService $cartService): Response
+    public function add($id): Response
     {
-        $cartService->add($id);
+        $this->cartService->add($id);
 
-        return $this->redirectToRoute('app_cart');
+        //$p = $this->productRepository->findOneById($id)->getName();
+        $this->addFlash('success', $this->cartService->GetNameByIdInAction($id) .' est ajouté au panier');
+        return $this->redirectToRoute('app_product');
+
+        
     }
 
     #[Route('/panier/decrease/{id}', name: 'cart_decrease')]
-    public function decrease($id, CartService $cartService)
+    public function decrease($id)
     {
-       
-        $cartService->decrease($id);
+      
+        $this->cartService->decrease($id);
+        $this->addFlash('danger', '1 ' . $this->cartService->GetNameByIdInAction($id) . ' retiré du panier');
+
         return $this->redirectToRoute('app_cart');
 
-
+       
     }
 
 
+
     #[Route('/panier/delete/{id}', name: 'cart_delete')]
-    public function delete($id, CartService $cartService)
+    public function delete($id)
     {
 
-        $cartService->delete($id);
+        $this->cartService->delete($id);
         return $this->redirectToRoute('app_cart');
+        $this->addFlash('notice','Panier mis à jour');
     }
 
 
 
     #[Route('/panier/remove/', name: 'cart_delete_all')]
-    public function removeAll(CartService $cartService)
+    public function removeAll()
     {
-        $cartService->remove();
+        $this->cartService->remove();
         // $session->remove("panier");
 
         return $this->redirectToRoute("app_cart");

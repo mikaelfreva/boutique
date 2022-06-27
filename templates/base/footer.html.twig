@@ -8,23 +8,13 @@
 
         </p>
     </footer>
-
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="{{ asset('assets/js/bootstrap.bundle.js') }}"></script>
-    <script type="text/javascript">
+ {# <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+ <script src="{{ asset('assets/js/bootstrap.bundle.js') }}"></script> 
+ <script src="{{ asset('assets/js/script.js') }}"></script>  #}
     
-        function placeFooter() {
-            if( $(document.body).height() < $(window).height() ) {
-                $("footer").css({position: "fixed", bottom:"0px"});
-            } else {
-                $("footer").css({position: ""});
-            }
-        }
-    
-        placeFooter();
-    
-    </script>
+    {% block javascripts %}
+     {{encore_entry_script_tags('app')}}
+    {% endblock  %}
+   
     </body>
-    {% block script %}
-    {% endblock %}
+    {% block script %}{% endblock %}

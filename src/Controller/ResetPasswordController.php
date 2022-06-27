@@ -42,8 +42,9 @@ class ResetPasswordController extends AbstractController
                 $reset_password = new ResetPassword();
                 $reset_password->setUser($user);
                 $reset_password->setToken(uniqid());
-                $reset_password->setCreatedAt(new DateTimeImmutable('now', new DateTimeZone('Europe/Paris')));
-                
+                //$reset_password->setCreatedAt(new DateTimeImmutable('now', new DateTimeZone('Europe/Paris')));
+                $reset_password->setCreatedAt(new DateTimeImmutable);
+              
                 
                 $this->entityManager->persist($reset_password);
                 $this->entityManager->flush();
@@ -83,7 +84,8 @@ class ResetPasswordController extends AbstractController
             return $this->redirectToRoute('app_reset_password');
         }
 
-        $now = new DateTimeImmutable('now', new DateTimeZone('Europe/Paris'));
+        //$now = new DateTimeImmutable('now', new DateTimeZone('Europe/Paris'));
+        $now = new DateTimeImmutable('now');
 
         if($now > $reset_password->getCreatedAt()->modify('+ 3 hour') ){
             $this->addFlash('notice','Votre demande de réinitialisation à expiré');

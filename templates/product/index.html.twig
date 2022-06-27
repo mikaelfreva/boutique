@@ -4,6 +4,8 @@
 
 {% block content %}
 
+
+
 <div class="row">
     <div class="col-md-3">
         <div class="form_filter_aside"> 
@@ -12,6 +14,7 @@
         </div>
     </div>
     <div class="col-md-9">
+        {{ Pluralize(products|length, 'Produit', 'Produits') }}
         <h3 class="title_entry">Nos produits</h3>
 
         <div class="row">

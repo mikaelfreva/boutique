@@ -7,6 +7,7 @@
 <h2>Votre panier</h2>
 
 {% if items | length > 0 %}
+<p><em>Vous avez {{ panier_count}} {{ Pluralize(panier_count,'produit','produits') }} dans votre panier</em> </p>
 <table class="table text-center">
     <thead>
         <tr>
@@ -67,13 +68,14 @@
         </tr>
     </tfoot>
 </table>
-<div class="text-right mb-5">
-    <b>Nombre de produits : </b> {{ items|length }}<br>
-    <b>Total de mon panier :</b>{{ (total / 100)|number_format(2,',','.') }}€
+<div class="text-end mb-5">
+    <b>Nombre de {{ Pluralize(panier_count,'produit','produits') }}  : </b> {{ panier_count }}<br>
+    <b>Total de mon panier :</b>{{ (total / 100)|number_format(2,',','.') }}€<br>
     <a href="{{ path('order') }}" class="btn btn-success btn-block mt-3">Valider mon panier</a>
 </div>
 {% else %}
-<p>Vide</p>
+
+<p><em>Vous n'avez aucun produit dans votre panier</em> </p>
 <div class="row">
           
     {% for product in products %}

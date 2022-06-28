@@ -20,7 +20,7 @@ class CartController extends AbstractController
         $this->productRepository = $productRepository;
         $this->cartService = $cartService;
     }
-
+//panier
     #[Route('/panier', name: 'app_cart')]
     public function index(): Response
     {

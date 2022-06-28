@@ -23,13 +23,13 @@ class HomeController extends AbstractController
         $this->cart = $cart;
     }
 
+    //accueil
     #[Route('/', name: 'home')]
     public function index(Request $request): Response
     {
 
         $carts = $this->cart->get('panier');
-        //dd($carts);
-
+     
         $products = $this->entityManager->getRepository(Product::class)->findByIsBest(1);
         $headers = $this->entityManager->getRepository(Header::class)->findAll();
         // $mail = new Mail();

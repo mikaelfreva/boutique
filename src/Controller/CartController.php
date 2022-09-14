@@ -42,7 +42,7 @@ class CartController extends AbstractController
 
         //$p = $this->productRepository->findOneById($id)->getName();
         $this->addFlash('success', $this->cartService->GetNameByIdInAction($id) .' est ajouté au panier');
-        return $this->redirectToRoute('app_product');
+        return $this->redirectToRoute('app_cart');
 
         
     }

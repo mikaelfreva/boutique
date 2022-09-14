@@ -18,7 +18,7 @@ class Mail
                 [
                     'From' => [
                         'Email' => "mike_theviper@outlook.com",
-                        'Name' => "La Boutique Française"
+                        'Name' => "La boutique de mike"
                     ],
                     'To' => [
                         [

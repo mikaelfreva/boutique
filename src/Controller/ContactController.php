@@ -25,7 +25,7 @@ class ContactController extends AbstractController
             $prenom = $form->get('prenom')->getData();
             $email = $form->get('email')->getData();
             $content = $form->get('content')->getData();
-            $message = "<h2>Ceci provient du formulaire de contact du site de la boutique.</h2> Nom : ". $nom . "<br> Prénom : ". $prenom . "<br> Message : ". $content . ".";
+            $message = "<h2>Ceci provient du formulaire de contact du site de la boutique de Mike.</h2> Nom : ". $nom . "<br> Prénom : ". $prenom . "<br> Message : ". $content . ".";
          
             $mail = new Mail();
             $mail->send('mikaelfreva@live.fr', $email, "Formulaire contact", $message);

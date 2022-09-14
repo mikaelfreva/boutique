@@ -50,7 +50,7 @@ class OrderSuccessController extends AbstractController
             $this->entityManager->flush();
             $mail = new Mail();
 
-            $mail->send($order->getUser()->getEmail(), $order->getUser()->getEmail(), 'Votre commande La Boutique Française est bien validée.', $content);
+            $mail->send($order->getUser()->getEmail(), $order->getUser()->getEmail(), 'Votre commande est bien validée.', $content);
         }
         //dd($order);
         return $this->render('order/order.success.html.twig', [

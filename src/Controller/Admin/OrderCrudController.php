@@ -80,7 +80,7 @@ class OrderCrudController extends AbstractCrudController
         }
 
         $mail = new Mail();
-        $mail->send($order->getUser()->getEmail(), $order->getUser()->getEmail(), 'Votre commande La Boutique Française est bien en préparation.', 'Votre commande est en préparation');
+        $mail->send($order->getUser()->getEmail(), $order->getUser()->getEmail(), 'Votre commande est bien en préparation.', 'Votre commande est en préparation');
 
         $url = $this->adminUrlGenerator
             ->setController(OrderCrudController::class)

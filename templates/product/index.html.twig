@@ -14,13 +14,13 @@
         </div>
     </div>
     <div class="col-md-9">
-        {{ Pluralize(products|length, 'Produit', 'Produits') }}
-        <h3 class="title_entry">Nos produits</h3>
+        <h3 class="title_entry">{{ Pluralize(products|length, 'Notre produit', 'Nos produits') }}
+        </h3>
 
         <div class="row">
             {% for product in products %}
 
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-6">
 
                 {% include "product/single_product.html.twig" %}
                

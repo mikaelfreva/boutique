@@ -28,11 +28,13 @@ class ContactController extends AbstractController
             $message = "<h2>Ceci provient du formulaire de contact du site de la boutique.</h2> Nom : ". $nom . "<br> Prénom : ". $prenom . "<br> Message : ". $content . ".";
          
             $mail = new Mail();
-            $mail->send('mikefreva@gmail.com', $email, "Formulaire contact", $message);
+            $mail->send('mikaelfreva@live.fr', $email, "Formulaire contact", $message);
 
          
             $this->addFlash('notice','Merci de nous avoir contacté');
 
+            return $this->redirectToRoute('home');
+    
            
         }
 

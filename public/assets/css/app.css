@@ -103,7 +103,6 @@ h3.titre_produitphare{
 
 .title_entry {
     text-transform: uppercase;
-    padding: 0 20px 20px 20px;
 }
 
 
@@ -221,4 +220,13 @@ h3.titre_produitphare{
 .promotion span{
     font-weight: 300;
     font-size: 1rem;
+}
+
+
+
+.p-30{
+    padding: 15vh 20px;
+}
+.home_controls a{
+    width: 85px;
 }

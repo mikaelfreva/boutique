@@ -76,8 +76,9 @@
 {% else %}
 
 <p><em>Vous n'avez aucun produit dans votre panier</em> </p>
+    <h2>Découvrez les produits du moments</h2>
 <div class="row">
-          
+
     {% for product in products %}
     <div class="col-md-3">
          {% include "product/single_product.html.twig" %}

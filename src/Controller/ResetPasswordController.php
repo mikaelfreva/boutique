@@ -56,7 +56,7 @@ class ResetPasswordController extends AbstractController
                 ]);
 
                 $content = "Bonjour " . $user->getEmail() . "<br> Vous avez demandé à réinitialiser votre mot de passe <br><br>";
-                $content .= "Merci de cliquez sur le lien suivant <a href='" . $url . "'>Mettre a jour le mot de passe</a>";
+                $content .= "Merci de cliquez sur le lien suivant <a href='https:commerce.mikaelfreva.com" . $url . "'>Mettre a jour le mot de passe</a>";
 
                 $mail = new Mail();
                 $mail->send($user->getEmail(), $user->getEmail(), "Réinitialisez mot de passe", $content);

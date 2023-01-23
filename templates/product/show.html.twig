@@ -3,8 +3,9 @@
 {% block title %}{{ product.name }}{% endblock %}
 
 {% block content %}
-<a class="btn btn-danger" href="{{ path('app_product')}}">Retour </a>
-<h2 class="title_entry">{{ product.name }}</h2>
+
+<p class="mb-3"><a class="text-black " href="{{ path('app_product')}}">Retour </a></p>
+<h2 class="title_entry mb-3">{{ product.name }}</h2>
 
 
 
@@ -26,7 +27,9 @@
 
     </div>
 </div>
-<h3>Nos meilleures ventes</h3>
+
+<div class="mt-5">
+  <h3>Nos meilleures ventes</h3>
     <p>Découvrez nos produits du moments</p>
 <div class="row">
     
@@ -37,7 +40,10 @@
         
     {% endfor %}
    
-</div><!-- /.row -->
+</div>   
+</div>
+
+
 
 
 {% endblock %}

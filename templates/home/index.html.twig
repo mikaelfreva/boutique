@@ -8,14 +8,15 @@
 
 
 
+
           <!-- Three columns of text below the carousel -->
         <div class="mt-5"></div>
-         <h3 class="titre_produitphare">Nos produits phares</h3>{#
+         <h3 class="text-center titre_produitphare">Nos produits phares</h3>{#
         <p>Découvrez nos produits du moments</p> #}
         <div class="row">
           
             {% for product in products %}
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-3 col-sm-6 w-50">
                  {% include "product/single_product.html.twig" %}
             </div>
                 
@@ -26,18 +27,11 @@
     </div>
       
 
-      
-
-        <div class="">
-            <!-- START THE FEATURETTES -->
-
-      <a href="{{ path('app_product')}}" class="promotion">
-            <h2>Promotion</h2>
-            <span>30%</span>
-        </a>
+     
 
 
-        <!-- /END THE FEATURETTES -->
+
+        
   
       
 

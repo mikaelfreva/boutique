@@ -3,11 +3,13 @@
 {% block title %}Mon compte{% endblock %}
 
 {% block content %}
+<p> <a  href="{{ path('app_logout') }}"  >Déconnexion</a></p>
     <h1>Mon compte</h1>
     {% if is_granted('ROLE_ADMIN') %}
         <small><a href="/admin">Vous êtes un administrateur, accéder au backoffice ?</a></small><br/>
     {% endif %}
     Bienvenue {{ app.user.email }} dans votre compte.<br/>
+   
     C'est dans cet espace que vous allez pouvoir gérer toutes vos informations personnelles.
     <hr>
     <div class="row">
